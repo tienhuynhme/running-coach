@@ -61,7 +61,7 @@ with tab1:
     st.subheader("Thiết lập kế hoạch luyện tập")
     start_day = st.date_input("Chọn ngày bắt đầu kế hoạch luyện tập", value=date.today())
     schedule_df = generate_schedule(start_day)
-schedule_df["Ngày"] = pd.to_datetime(schedule_df["Ngày"])
+    schedule_df["Ngày"] = pd.to_datetime(schedule_df["Ngày"])
     today = pd.to_datetime(date.today())
     today_plan = schedule_df[schedule_df["Ngày"].dt.date == today.date()]
     if not today_plan.empty:
