@@ -62,7 +62,7 @@ with tab1:
     start_day = st.date_input("Chọn ngày bắt đầu kế hoạch luyện tập", value=date.today())
     schedule_df = generate_schedule(start_day)
     today = pd.to_datetime(date.today())
-    today_plan = schedule_df[schedule_df["Ngày"] == today]
+    today_plan = schedule_df[schedule_df["Ngày"].dt.date == today.date()]
     if not today_plan.empty:
         st.success("Buổi tập hôm nay:")
         st.write(today_plan.iloc[0][["Buổi", "Nội dung", "Target HR Zone"]])
